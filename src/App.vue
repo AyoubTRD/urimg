@@ -1,28 +1,26 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app style="">
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+    <v-btn fab fixed right bottom @click="switchTheme" color="primary">
+      <v-icon>{{ !$vuetify.theme.dark ? "brightness_7" : "brightness_4" }}</v-icon>
+    </v-btn>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  components: { Header },
+  methods: {
+    switchTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    }
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
